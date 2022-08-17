@@ -10,28 +10,29 @@ import Foundation
 import UIKit
 
 class ProfileViewController : UIViewController {
-
-    let uiView: UIView = {
-            let view = ProfileHeaderView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
-        }()
-
+    
+    let profileView: UIView = {
+        let view = ProfileHeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
-           super.viewDidLoad()
-
-            view.backgroundColor = .secondarySystemBackground
-            self.title = "Profile"
-
-            view.addSubview(uiView)
-       }
-
+        super.viewDidLoad()
+        
+        view.backgroundColor = .secondarySystemBackground
+        
+        self.title = "Profile"
+        
+        view.addSubview(profileView)
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews();
-        self.uiView.frame = CGRect(x: 0, y: 0, width: super.view.frame.width, height: super.view.frame.height) // TODO: уточнить правильность
+        self.profileView.frame = CGRect(x: 0, y: 0, width: super.view.frame.width, height: super.view.frame.height) // TODO: уточнить правильность
     }
-
-
-
-
+    
+    
+    
+    
 }
