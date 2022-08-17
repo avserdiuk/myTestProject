@@ -11,6 +11,12 @@ import UIKit
 
 class ProfileViewController : UIViewController {
 
+    let uiView: UIView = {
+            let view = ProfileHeaderView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+
     override func viewDidLoad() {
            super.viewDidLoad()
 
@@ -18,25 +24,14 @@ class ProfileViewController : UIViewController {
             self.title = "Profile"
 
             view.addSubview(uiView)
-
-       
-
        }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews();
         self.uiView.frame = CGRect(x: 0, y: 0, width: super.view.frame.width, height: super.view.frame.height) // TODO: уточнить правильность
-
     }
 
-    @objc func buttonPressed() {
-        print("11")
-        }
 
-    let uiView: UIView = {
-            let view = ProfileHeaderView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
-        }()
+
 
 }

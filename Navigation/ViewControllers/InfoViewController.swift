@@ -21,6 +21,7 @@ class InfoViewController : UIViewController{
             button.setTitleColor(UIColor.white, for: .normal)
             button.backgroundColor = .systemBlue
             button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
             return button
         }()
 
@@ -31,6 +32,7 @@ class InfoViewController : UIViewController{
             button.setTitleColor(UIColor.white, for: .normal)
             button.backgroundColor = .systemBlue
             button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
             return button
         }()
 
@@ -42,17 +44,7 @@ class InfoViewController : UIViewController{
             view.addSubview(button)
             view.addSubview(buttonAlert)
 
-            NSLayoutConstraint.activate([
-                    buttonAlert.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                    buttonAlert.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-
-                    button.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-                    button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-                   ])
-
-            // добавляем таргеты на кнопки
-            button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
-            buttonAlert.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+            addConstraints()
 
             // добавляем события для алерта
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
@@ -61,8 +53,17 @@ class InfoViewController : UIViewController{
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                         print("message in console2")
                     }))
-
        }
+
+    func addConstraints(){
+        NSLayoutConstraint.activate([
+                buttonAlert.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                buttonAlert.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+
+                button.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+                button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+               ])
+    }
 
     // функция закрытия модального кона
     @objc func showPostController() {

@@ -30,11 +30,7 @@ class PostViewController : UIViewController {
         view.addSubview(titleLabel)
         titleLabel.text = titlePost
 
-        // добавляем расположение заголовка
-        NSLayoutConstraint.activate([
-                   titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 55),
-                   titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-               ])
+        addConstraints()
 
         // создаем UIBarButtonItem с 1 контейнером по заданию
         let modal = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showModal))
@@ -46,6 +42,13 @@ class PostViewController : UIViewController {
             let popupViewController = InfoViewController()
             popupViewController.modalPresentationStyle = .fullScreen
             self.present(popupViewController, animated: true, completion: nil)
+        }
+
+        func addConstraints(){
+            NSLayoutConstraint.activate([
+                       titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 55),
+                       titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+                   ])
         }
 
 }

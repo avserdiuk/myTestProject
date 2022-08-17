@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-// создание структуры по заданию
-struct Post {
-    var title : String
-}
-
 class FeedViewController : UIViewController {
 
     // создание обьекта по заданию
@@ -35,6 +30,7 @@ class FeedViewController : UIViewController {
             button.backgroundColor = .systemBlue
             button.setTitleColor(UIColor.white, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
             return button
         }()
     
@@ -47,9 +43,6 @@ class FeedViewController : UIViewController {
             // отображаем все на экране
             view.addSubview(titleLabel)
             view.addSubview(button)
-
-            // ставим таргет на кнопку
-            button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
 
             // проставляем привязки по расположению
             setConstraints()
